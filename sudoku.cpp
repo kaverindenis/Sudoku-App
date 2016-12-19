@@ -53,16 +53,28 @@ bool CheckUniq()
 
 void WypiszSudoku()
 {
-    for (int i = 0; i < 9; i++)
-    {
-        cout << " ";
-        for (int j = 0; j < 9; j++)
-        {
-            cout << " ";
-            cout << sudoku[i][j];
-        }
-        cout << endl;
-    }
+	for (int i = 0; i < 9; i++)
+	{
+		if (i % 3 == 0)
+		{
+			cout << endl;
+		}
+		else{}
+
+		for (int j = 0; j < 9; j++)
+		{
+			if (j % 3 == 0)
+			{
+				cout << "  ";
+			}
+			else{}
+
+			cout << sudoku[i][j];
+		}
+		cout << endl;
+	}
+
+	cout << endl;
 }
 
 void DodajLiczbe(int wiersz, int kolumna, int liczba)
@@ -83,31 +95,36 @@ void DodajLiczbe(int wiersz, int kolumna, int liczba)
 
 void Game()
 {
-    cout << "Wpisz numer wiersza: ";
-    cin >> wiersz;
-    
-    if (wiersz >= 9)
-    {
-        cout << "Wpisany wiersz nie moze byc wiekszy albo rowny 9." << endl;
-        Game();
-    }
-    
-    cout << "Wpisz numer kolumny: ";
-    cin >> kolumna;
-    
-    if (kolumna >= 9)
-    {
-        cout << "Wpisana kolumna nie moze byc wieksza albo rowna 9." << endl;
-        Game();
-    }
-    
-    cout << "Wpisz liczbe: ";
-    cin >> liczba;
-    
-    
-    cout << endl;
-    DodajLiczbe(wiersz, kolumna, liczba);
-    Game();
+	cout << "Wpisz numer wiersza: ";
+	cin >> wiersz;
+
+	if (wiersz >= 9 | wiersz < 0)
+	{
+		cout << "Wpisany wiersz nie moze byc wiekszy albo rowny 9 i mniejszy 0." << endl;
+		Game();
+	}
+
+	cout << "Wpisz numer kolumny: ";
+	cin >> kolumna;
+
+	if (kolumna >= 9 | kolumna < 0)
+	{
+		cout << "Wpisana kolumna nie moze byc wieksza albo rowna 9 i mniejsza 0." << endl;
+		Game();
+	}
+
+	cout << "Wpisz liczbe: ";
+	cin >> liczba;
+
+	if (liczba > 9 | liczba < 0)
+	{
+		cout << "Wpisana liczba nie moze byc wieksza 9 i mniejsza 0." << endl;
+		Game();
+	}
+
+	cout << endl;
+	DodajLiczbe(wiersz, kolumna, liczba);
+	Game();
 }
 
 int main()
